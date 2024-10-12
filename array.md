@@ -66,27 +66,405 @@ Key Points:
 ###### 2. What's the output?
 
 ```javascript
-for (var i = 0; i < 3; i++) {
-  setTimeout(() => console.log(i), 1);
-}
+const a = [1, 2, 3];
+const b = a;
+b[0] = 0;
 
-for (let i = 0; i < 3; i++) {
-  setTimeout(() => console.log(i), 1);
-}
+console.log(a);
 ```
-
-- A: `0 1 2` and `0 1 2`
-- B: `0 1 2` and `3 3 3`
-- C: `3 3 3` and `0 1 2`
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### Answer: C
+#### Answer: [0,2,3]
 
-Because of the event queue in JavaScript, the `setTimeout` callback function is called _after_ the loop has been executed. Since the variable `i` in the first loop was declared using the `var` keyword, this value was global. During the loop, we incremented the value of `i` by `1` each time, using the unary operator `++`. By the time the `setTimeout` callback function was invoked, `i` was equal to `3` in the first example.
+because of reference link
 
-In the second loop, the variable `i` was declared using the `let` keyword: variables declared with the `let` (and `const`) keyword are block-scoped (a block is anything between `{ }`). During each iteration, `i` will have a new value, and each value is scoped inside the loop.
+</p>
+</details>
+
+---
+
+###### 3. What's the output?
+
+```javascript
+const array = [];
+array[10] =10; 
+console.log(array.length);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 11
+
+because of
+
+</p>
+</details>
+
+---
+
+###### 4. What's the output?
+
+```javascript
+const array_1 =new Array(1,2,3);
+const array_2 = new Array(3);
+console.log(array_1.length, array_2.length);
+console.log(array_1[0]+array_2[0]);
+console.log(array_2[0]);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 3,3 NaN, undefined
+
+because of
+
+</p>
+</details>
+
+---
+
+###### 4. What's the output?
+
+```javascript
+const numbers =[1,2,3,4,5];
+const a = numbers;
+const [b] = numbers
+const [c,d]= numbers;
+
+console.log(a,b,c,d);
+```
+
+<!-- - A: `0 1 2` and `0 1 2`
+- B: `0 1 2` and `3 3 3`
+- C: `3 3 3` and `0 1 2` -->
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: [1, 2, 3, 4, 5], 1, 1 2
+
+beacuse of 
+
+</p>
+</details>
+
+---
+
+###### 5. What's the output?
+
+```javascript
+const toDoList = (array) => {
+    return array.push(5);
+}
+const list = [1,2,3];
+const result = toDoList(list);
+
+console.log(result);
+console.log(list);
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 4, [1,2,3,4]
+
+beacuse of
+
+</p>
+</details>
+
+---
+
+###### 6. What's the output?
+
+```javascript
+const toDoList =(value, list)=> {
+    return list.push(value);
+}
+let b= toDoList(4, [1,1]);
+console.log(b);
+```
+
+<!-- - A: `0 1 2` and `0 1 2`
+- B: `0 1 2` and `3 3 3`
+- C: `3 3 3` and `0 1 2` -->
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 3
+
+ beacuse of
+
+</p>
+</details>
+
+---
+
+###### 6. What's the output?
+
+```javascript
+const a = [1,2].push(10);
+console.log(a.push(20))
+```
+
+<!-- - A: `0 1 2` and `0 1 2`
+- B: `0 1 2` and `3 3 3`
+- C: `3 3 3` and `0 1 2` -->
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: typeError
+
+ beacuse of
+
+</p>
+</details>
+
+---
+
+###### 7. What's the output?
+
+```javascript
+let arr = [];
+console.log(fillArray(2, 10));
+function fillArray(min, max) {
+  for (let i = min; i <= max; i += 2) {
+    return arr.push(i);
+  }
+}
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 1
+
+ In your current code, the fillArray function will return after the first iteration of the loop due to the return statement inside the loop. This means that the function will stop running after it pushes the first even number (2 in this case) to the array, and it will return the result of the arr.push(i) operation.
+
+The arr.push(i) method adds an element to the array and returns the new length of the array (which will be 1 after the first push).
+
+So, the result of calling fillArray(2, 10) in this case will be 1, since the array will contain only one element (2) and the push method will return the new length of the array.
+
+Here’s what happens step-by-step:
+
+i = 2 (the loop starts).
+arr.push(i) adds 2 to the array, and arr becomes [2].
+The function returns the result of arr.push(i), which is 1 (the new length of the array).
+The loop stops because of the return statement.
+So, the output of console.log(fillArray(2, 10)); will be 1, and the array arr will only contain [2].
+
+</p>
+</details>
+
+---
+
+###### 8. What's the output?
+
+```javascript
+let array = [1,2,3,4,5,6];
+const a = array.splice(2,1);
+console.log(a,array);
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: [3], [1, 2, 4, 5, 6]
+
+because of
+
+</p>
+</details>
+
+---
+
+###### 9. What's the output?
+
+```javascript
+let array = [1,2,3,4,5,6];
+const a = array.splice(2,2);
+console.log(a,array);
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: [3,4], [1, 2, 5, 6]
+
+because of
+
+</p>
+</details>
+
+---
+
+###### 10. What's the output?
+
+```javascript
+let array = [1,2,3,4,5,6];
+const a = array.splice(2,2,10,20);
+console.log(a,array);
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: [3, 4],[1, 2, 10, 20, 5, 6]
+
+because of
+
+</p>
+</details>
+
+---
+
+###### 11. What's the output?
+
+```javascript
+let array1 = [1,2,3,4,5,6];
+let array2 = array1;
+array2.push(10);
+console.log(array1);
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: [1,2,3,4,5,6,10];
+
+because of
+
+</p>
+</details>
+
+---
+
+###### 12. What's the output?
+
+```javascript
+const result = New Array (3).map(item => 0)
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: [empty, empty, empty]
+
+because of
+
+</p>
+</details>
+
+---
+
+###### 13. What's the output?
+
+```javascript
+console.log(
+  [1, , 3].map((x, index) => {
+    console.log(`Visit ${index}`);
+    return x * 2;
+  }),
+);
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer:  Visit 0, Visit 2 [2, empty, 6], or [2, , 6]
+
+1. Array Elements
+The array is [1, , 3]. This means:
+At index 0, there is the value 1.
+At index 1, there is a hole (not undefined, but an actual empty spot).
+At index 2, there is the value 3.
+2. The map Function Behavior
+The map function only processes defined elements in the array. Holes in a sparse array are skipped and are not passed to the callback function.
+3. Step-by-step Execution
+Iteration 1: For index 0, the value is 1.
+
+Logs: Visit 0.
+Returns 1 * 2 = 2.
+Iteration 2: For index 1, there is a hole (i.e., no value). The map function skips this index without invoking the callback.
+
+No log output for this index because the callback is not called.
+Iteration 3: For index 2, the value is 3.
+
+Logs: Visit 2.
+Returns 3 * 2 = 6.
+
+</p>
+</details>
+
+---
+
+###### 14. What's the output?
+
+```javascript
+const result = [1, 2, 3].map(item => {});
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer:  [undefined. Undefined. Undefined]
+
+if so, the function returns nothing (i.e., undefined), because return without a value implicitly returns undefined.
+
+</p>
+</details>
+
+---
+
+###### 15. What's the output?
+
+```javascript
+const result = [1, 2, 3].map(item => { if (typeof item === "number") { return; } return item * 2; });
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer:  [undefined. Undefined. Undefined]
+
+if (typeof item === "number") { return; }: This condition checks if item is a number, and if so, the function returns nothing (i.e., undefined), because return without a value implicitly returns undefined.
+
+</p>
+</details>
+
+---
+
+###### 16. What's the output?
+
+```javascript
+function updateBlock(width, height, ...other) {
+    console.log(width, height, ...other);
+}
+updateBlock(100, 200, "red", "blau");
+```
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer:  100,200, "red", "blau"
+
+В параметрах у нас Рест опереатор а Консоль лог спред оператор
 
 </p>
 </details>
